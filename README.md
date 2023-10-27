@@ -4,6 +4,7 @@
 Este trabalho trata sobre o desenvolvimento de uma aplicação presta e consome serviços através da Interface de Programação de Aplicação (API) disponibilizada pelos sistemas operacionais: Sockets.
 
 Utilitário blockchain
+
 – O utilitário é simultaneamente cliente e servidor (peer-to-peer)
 
 – Diferentes clientes devem ser capazes de se descobrir em uma rede local

@@ -22,8 +22,8 @@ async def blockchain_server(host, port):
             print(f"Received data from client: {data}")
             response = "Hello, client!"
             client_socket.send(response.encode())
-    client_socket.close()
-    pass
+        client_socket.close()
+        pass
 
 
 if __name__ == "__main__":
