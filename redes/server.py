@@ -1,4 +1,8 @@
 import socket
+import asyncio
+
+#def blockchain_server_init(port):
+#    asyncio.run(blockchain_server(port))
 
 def start_server(host, port):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

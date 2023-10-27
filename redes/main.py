@@ -67,14 +67,11 @@ blockchain = Blockchain()
 
 #https://docs.python.org/pt-br/3/library/socket.html#socket.socket
 
-def blockchain_server_init(port):
-    asyncio.run(blockchain_server(port))
-
-async def blockchain_server(port: int):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind((socket.gethostname(), port))
-    sock.listen(10)
-    clients = {}
+#async def blockchain_server(port: int):
+#    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#    sock.bind((socket.gethostname(), port))
+#    sock.listen(10)
+#    clients = {}
 
 # Mining a new block (mineração)
 def mine_block():
