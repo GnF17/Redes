@@ -61,6 +61,44 @@ class Blockchain:
             block_index += 1
  
         return True
+    
+    # Mining a new block
+    def mine_block(self):
+        previous_block = blockchain.print_previous_block()
+        previous_proof = previous_block['proof']
+        proof = blockchain.proof_of_work(previous_proof)
+        previous_hash = blockchain.hash(previous_block)
+        block = blockchain.create_block(proof, previous_hash)
+    
+        response = {'message': 'A block is MINED',
+                    'index': block['index'],
+                    'timestamp': block['timestamp'],
+                    'proof': block['proof'],
+                    'previous_hash': block['previous_hash']}
+    
+        return response
+    
+    # Check validity of blockchain
+    def valid():
+        valid = blockchain.chain_valid(blockchain.chain)
+    
+        if valid:
+            response = {'message': 'The Blockchain is valid.'}
+        else:
+            response = {'message': 'The Blockchain is not valid.'}
+        return response
+    
+    # Divulgação e consenso (faltam)
+
+    '''
+    def broadcast_block(self, chain):
+    #precisa da lista de pares para enviar a 'chain'
+
+
+
+    def consenso(self, chain):
+    #depende do tamanho da cadeia
+    '''
 
 # Create the object of the class blockchain
 blockchain = Blockchain()
@@ -73,47 +111,10 @@ blockchain = Blockchain()
 #    sock.listen(10)
 #    clients = {}
 
-# Mining a new block (mineração)
-def mine_block():
-    previous_block = blockchain.print_previous_block()
-    previous_proof = previous_block['proof']
-    proof = blockchain.proof_of_work(previous_proof)
-    previous_hash = blockchain.hash(previous_block)
-    block = blockchain.create_block(proof, previous_hash)
- 
-    response = {'message': 'A block is MINED',
-                'index': block['index'],
-                'timestamp': block['timestamp'],
-                'proof': block['proof'],
-                'previous_hash': block['previous_hash']}
- 
-    return response
- 
-#Divulgação e consenso (faltam)
-
-'''
-def broadcast_block(self, chain):
-#precisa da lista de pares para enviar a 'chain'
-
-
-
-def consenso(self, chain):
-#depende do tamanho da cadeia
-'''
-
 # Display blockchain
 def display_chain():
     response = {'chain': blockchain.chain,
                 'length': len(blockchain.chain)}
     return response
- 
-# Check validity of blockchain
-def valid():
-    valid = blockchain.chain_valid(blockchain.chain)
- 
-    if valid:
-        response = {'message': 'The Blockchain is valid.'}
-    else:
-        response = {'message': 'The Blockchain is not valid.'}
-    return response
+
  
