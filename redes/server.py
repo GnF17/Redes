@@ -2,20 +2,8 @@ import socket
 import asyncio
 from main import Blockchain
 
-# Configurações do servidor
-#HOST = '127.0.0.1'  # Endereço IP local
-#PORT = 5555  # Porta para a conexão
-
 # Inicialização da Blockchain
 blockchain = Blockchain()
-
-# Inicialização do socket do servidor
-#server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#server_socket.bind((HOST, PORT))
-#server_socket.listen()  # Aceita até 2 conexões de clientes
-
-# Lista para armazenar as conexões dos usuários
-#users_connections = []
 
 def blockchain_server_init(port):
     asyncio.run(blockchain_server(port))

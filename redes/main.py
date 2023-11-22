@@ -3,8 +3,6 @@ import hashlib
 import socket
 import multiprocessing as mp
 import datetime
-#from server import *
-#from client import *
 
 class Blockchain:
  
@@ -114,14 +112,4 @@ class Blockchain:
 # Create the object of the class blockchain
 blockchain = Blockchain()
 
-#https://docs.python.org/pt-br/3/library/socket.html#socket.socket
-
-#async def blockchain_server(port: int):
-#    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#    sock.bind((socket.gethostname(), port))
-#    sock.listen(10)
-#    clients = {}
-
-
-
- 
+#https://docs.python.org/pt-br/3/library/socket.html#socket.socket 
