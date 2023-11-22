@@ -16,7 +16,11 @@ async def client_server(host, port):
         data = client_socket.recv(1024).decode()
         print(f"Received data from server: {data}")
 
-        Blockchain.create_block(1,'0')
+        proof = Blockchain.create_block(1,'0')
+
+        print(f"Creating block: {proof}")
+        print(Blockchain.print_previous_block())
+        print(Blockchain.proof_of_work(proof['proof']))
 
     except ConnectionResetError:
         print("Connection reset by the remote host.")
