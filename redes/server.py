@@ -22,12 +22,12 @@ def blockchain_server_init(port):
 
 async def handle_client(client_socket):
     try:
-        data = client_socket.recv(1024).decode()
-        print(f"Received data from client: {data}")
+        data = await loop.sock_recv(client_socket, 1024)
+        print(f"Received data from client: {data.decode()}")
 
         # Processar dados recebidos
         response = "Hello, client!"
-        client_socket.send(response.encode())
+        await loop.sock_sendall(client_socket, response.encode())
 
     except ConnectionResetError:
         print("Connection reset by the remote host.")
@@ -37,39 +37,24 @@ async def handle_client(client_socket):
 
 async def blockchain_server(host, port):
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    #server_socket.bind((host, port))
-    #server_socket.listen()
+    server_socket.bind((host, port))
+    server_socket.listen()
 
-    server = await asyncio.start_server(
-        handle_client, host, port
-    )
+    try:
+        while True:
+            client_socket, client_address = await loop.sock_accept(server_socket)
+            print(f"Accepted connection from {client_address}")
 
-    async with server:
-        print(f"Server is listening on {host}:{port}")
-        await server.serve_forever()
+            loop.create_task(handle_client(client_socket))
 
-    print(f"Server is listening on {host}:{port}")
+    except Exception as e:
+        print(f"Error in server: {e}")
 
-    clients = {}
-
-    while True:
-        (client_socket, client_address) = server_socket.accept()
-        print(f"Accepted connection from {client_address}")
-
-        for client in clients.values():
-            print("BLOCKCHAIN SERVER - Listening to client requests: ", client[1])
-            data = client_socket.recv(1024).decode()
-            print(f"Received data from client: {data}")
-            response = "Hello, client!"
-            client_socket.send(response.encode())
-
-        print(f"Clients connected: {clients.items}") #Clientes se descobrindo
-
-        client_socket.close()
-        pass
-
+    finally:
+        server_socket.close()
 
 if __name__ == "__main__":
     host = "127.0.0.1"
     port = 12345
-    asyncio.run(blockchain_server(host, port))
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(blockchain_server(host, port))
