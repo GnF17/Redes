@@ -3,7 +3,8 @@ import hashlib
 import socket
 import multiprocessing as mp
 import datetime
-from redes import *
+#from server import *
+#from client import *
 
 class Blockchain:
  
