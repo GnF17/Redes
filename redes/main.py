@@ -84,7 +84,7 @@ class Blockchain:
         return response
     
     # Check validity of blockchain
-    def valid():
+    def valid(self):
         valid = blockchain.chain_valid(blockchain.chain)
     
         if valid:
@@ -105,8 +105,8 @@ class Blockchain:
     #depende do tamanho da cadeia
     '''
     # Display blockchain
-
-    def display_chain():
+    def display_chain(self):
+        print(blockchain)
         response = {'chain': blockchain.chain,
                     'length': len(blockchain.chain)}
         return response
