@@ -18,6 +18,7 @@ async def client_server(host, port):
         print(f"Received data from server: {data}")
 
         proof = Blockchain.create_block(1,'0')
+        chain = Blockchain.display_chain()
 
         print(f"Creating block: {proof}")
         print(Blockchain.print_previous_block())
@@ -25,7 +26,7 @@ async def client_server(host, port):
         #print(blockchain_instance.valid())
         #print(Blockchain.valid())
         print(f"Mining a new block: {Blockchain.mine_block()}")
-        print(f"Blockchain: {Blockchain.display_chain()}")
+        print(f"Blockchain: {chain}")
 
     
     except ConnectionResetError:

@@ -33,6 +33,7 @@ class Blockchain:
  
         while check_proof is False:
             hash_operation = hashlib.sha256(str(new_proof**2 - previous_proof**2).encode()).hexdigest()
+            #hash_operation = hashlib.sha256(str(new_proof**2 - previous_proof**2).encode()).hexdigest()
             if hash_operation[:5] == '00000':
                 check_proof = True
             else:
@@ -41,7 +42,10 @@ class Blockchain:
         return new_proof
 
     def hash(self, block):
-            return hashlib.sha256(block.encode()).hexdigest()
+        # Converte o dicionário para uma string antes de aplicar o encode
+        block_str = str(block)
+        return hashlib.sha256(block_str.encode()).hexdigest()
+
  
     def chain_valid(self, chain):
         previous_block = chain[0]
