@@ -100,6 +100,12 @@ class Blockchain:
     def consenso(self, chain):
     #depende do tamanho da cadeia
     '''
+    # Display blockchain
+
+    def display_chain():
+        response = {'chain': blockchain.chain,
+                    'length': len(blockchain.chain)}
+        return response
 
 # Create the object of the class blockchain
 blockchain = Blockchain()
@@ -112,10 +118,6 @@ blockchain = Blockchain()
 #    sock.listen(10)
 #    clients = {}
 
-# Display blockchain
-def display_chain():
-    response = {'chain': blockchain.chain,
-                'length': len(blockchain.chain)}
-    return response
+
 
  

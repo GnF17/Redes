@@ -4,6 +4,7 @@ import time
 from main import *
 
 Blockchain = Blockchain()
+#blockchain_instance = Blockchain
 
 async def client_server(host, port):
     try:
@@ -20,8 +21,13 @@ async def client_server(host, port):
 
         print(f"Creating block: {proof}")
         print(Blockchain.print_previous_block())
-        print(Blockchain.proof_of_work(proof['proof']))
+        print(f"Proof of work: {Blockchain.proof_of_work(proof['proof'])}")
+        #print(blockchain_instance.valid())
+        #print(Blockchain.valid())
+        print(f"Mining a new block: {Blockchain.mine_block()}")
+        print(f"Blockchain: {Blockchain.display_chain()}")
 
+    
     except ConnectionResetError:
         print("Connection reset by the remote host.")
 
