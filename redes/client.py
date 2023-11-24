@@ -6,6 +6,11 @@ from main import *
 Blockchain = Blockchain()
 
 async def client_server(host, port):
+
+    proof = Blockchain.create_block(1,'0')
+    chain = Blockchain.display_chain()
+    validity = Blockchain.valid()
+
     try:
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((host, port))
@@ -15,10 +20,6 @@ async def client_server(host, port):
 
         data = client_socket.recv(1024).decode()
         print(f"Received data from server: {data}")
-
-        proof = Blockchain.create_block(1,'0')
-        chain = Blockchain.display_chain()
-        validity = Blockchain.valid()
 
         print(f"Creating block: {proof}")
         print(Blockchain.print_previous_block())
